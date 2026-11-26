@@ -2,6 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <vector>
+#include <string>
 
 #define N1 1000
 #define N2 10000
@@ -218,21 +219,53 @@ int main() {
     for (int i = 0; i < tamano; i++) {
         arr[i] = rand() % 1000000;
     }
-    
+    int opcion;
+    std::string nombrealg;
+    std::cout<<"=========SORTS============\n";
+    std::cout<<"1. Selection sort.\n 2. Bubble Sort.\n 3. Merge Sort.\n 4. Quicksort. \n 5. Heap Sort.\n 6. Insertion Sort\n";
+    std::cout<<"Elige una opcion:\n";
+    std::cin>>opcion;
     clock_t inicio = clock();
-    //Selection_Sort(arr, tamano);
-    //bubbleSort(arr, tamano); 
-    //mergeSort(arr, tamano);
-    //quickSort(arr, tamano);
-    //heapSort(arr, tamano); 
-    insertionSort(arr, tamano); 
+    switch (opcion) {
+        case 1:
+        Selection_Sort(arr, tamano);
+        nombrealg="Selection Sort";
+        break;
+        case 2:
+        bubbleSort(arr, tamano); 
+        nombrealg="Bubble Sort";
+        break;
+        case 3:
+        mergeSort(arr, tamano);
+        nombrealg="Merge Sort";
+        break;
+        case 4:
+        quickSort(arr, tamano);
+        nombrealg="Quick Sort";
+        break;
+        case 5:
+        heapSort(arr, tamano); 
+        nombrealg="Heap Sort";
+        break;
+        case 6:
+        insertionSort(arr, tamano); 
+        nombrealg="Insertion Sort";
+        break;
+        default:
+        std::cout<<"Opcion no disponible \n";
+        return 0;
+    
+    }
+    
+    
     clock_t fin = clock();
 
     double tiempo_segundos = double(fin - inicio) / CLOCKS_PER_SEC;
-
+    std::cout<< "Algoritmo: "<<nombrealg<<'\n';
     std::cout << "Arreglo de " << tamano << " elementos ordenado." << '\n';
     std::cout << "Tiempo de ejecucion: " << tiempo_segundos << " segundos." << '\n';
 
     delete[] arr; 
+
     return 0;
 }
